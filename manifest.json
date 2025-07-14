@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "댓글 민감도 분석기",
+  "version": "1.0",
+  "description": "Flask 서버와 연동해 댓글 위험도를 분석합니다.",
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "host_permissions": ["http://127.0.0.1:5000/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "댓글 위험도 분석"
+  }
+}
